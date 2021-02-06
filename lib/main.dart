@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         home: Consumer<LoginModel>(
           builder: (BuildContext context, LoginModel loginModel,
                   Widget child) =>
-              loginModel.currentUser == null ? LoginPage() : SellerHome(),
+              loginModel.currentUser == null ? LoginPage() : InvestorHome(),
         ),
       ),
     );
