@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutterio/core/locator.dart';
-import 'package:flutterio/view_models/product_model.dart';
+import 'package:flutterio/core/services/navigator.dart';
+import 'package:flutterio/views/seller/product.dart';
 
 class SellerHome extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class SellerHome extends StatefulWidget {
 class _SellerHomeState extends State<SellerHome> {
   @override
   Widget build(BuildContext context) {
-    var model = getIt<ProductModel>();
+    var model = getIt<NavigatorService>();
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           child: Icon(
@@ -18,7 +19,7 @@ class _SellerHomeState extends State<SellerHome> {
             color: Colors.white,
           ),
           onPressed: () async {
-            await model.navigateToContacts();
+            await model.navigateTo(ProductScreen());
           },
         ),
 

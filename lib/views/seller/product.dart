@@ -62,7 +62,6 @@ class _ProductScreenState extends State<ProductScreen> {
                   height: size.height * 0.02,
                 ),
                 InkWell(
-
                   child: Container(
                     decoration: BoxDecoration(
                         color: Colors.red,
