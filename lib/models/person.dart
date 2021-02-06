@@ -1,0 +1,1 @@
+//User sınıfı olarak kullanılacak. Firebase User ile karışmasın diye person diye hitap edildi.
