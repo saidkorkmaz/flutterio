@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutterio/core/locator.dart';
-import 'package:flutterio/core/services/authentication.dart';
+import 'package:flutterio/core/services/authentication_service.dart';
 import 'package:flutterio/views/investor/investor_home.dart';
 import 'package:flutterio/views/login.dart';
 import 'package:flutterio/views/seller/seller_home.dart';
@@ -16,6 +16,7 @@ class LoginModel extends BaseModel {
 
     try {
       var user = await _authService.signIn(email, password);
+      print("User id :${user.uid}");
 
       await navigatorService.navigateToReplace(SellerHome());
     } catch (e) {

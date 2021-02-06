@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterio/core/locator.dart';
-import 'package:flutterio/core/services/navigator.dart';
+import 'package:flutterio/core/services/navigator_service.dart';
 import 'package:flutterio/views/seller/product.dart';
 
 class SellerHome extends StatefulWidget {

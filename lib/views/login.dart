@@ -4,14 +4,13 @@ import 'package:flutterio/view_models/login_model.dart';
 import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key key}) : super(key: key);
+  LoginPage({Key key}) : super(key: key);
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    final TextEditingController _emailController = TextEditingController();
-    final TextEditingController _passwordController = TextEditingController();
-
     return ChangeNotifierProvider(
       create: (BuildContext context) => getIt<LoginModel>(),
       child: Consumer<LoginModel>(

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutterio/core/locator.dart';
-import 'package:flutterio/core/services/storage.dart';
+import 'package:flutterio/core/services/storage_service.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'base_model.dart';
