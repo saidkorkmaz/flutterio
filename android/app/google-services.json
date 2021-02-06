@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "625064219921",
+    "project_id": "fluttrio",
+    "storage_bucket": "fluttrio.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:625064219921:android:bc0b2cbbb644bb9eb8a8b0",
+        "android_client_info": {
+          "package_name": "com.kasagi.flutterio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "625064219921-koj3h8ld27s3fm48lo88r1fchcc9rvqm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaxgLcFIKqVr1zI6W_3GhamXVJlZ134Ew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "625064219921-koj3h8ld27s3fm48lo88r1fchcc9rvqm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
