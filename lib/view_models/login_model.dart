@@ -14,9 +14,9 @@ class LoginModel extends BaseModel {
     busy = true;
 
     try {
-      var user = await _authService.signIn(email,password);
+      var user = await _authService.signIn(email, password);
 
-     await navigatorService.navigateToReplace(InvestorHome());
+      await navigatorService.navigateToReplace(InvestorHome());
     } catch (e) {
       busy = false;
     }

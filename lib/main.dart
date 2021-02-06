@@ -29,8 +29,9 @@ class MyApp extends StatelessWidget {
           accentColor: Colors.redAccent,
         ),
         home: Consumer<LoginModel>(
-          builder: (BuildContext context, LoginModel signInModel, Widget child) =>
-          signInModel.currentUser == null ? LoginPage() : InvestorHome(),
+          builder: (BuildContext context, LoginModel signInModel,
+                  Widget child) =>
+              signInModel.currentUser == null ? LoginPage() : InvestorHome(),
         ),
       ),
     );

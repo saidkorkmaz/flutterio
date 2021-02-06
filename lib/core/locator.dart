@@ -9,7 +9,7 @@ GetIt getIt = GetIt.instance;
 setupLocators() {
   getIt.registerLazySingleton(() => NavigatorService());
   getIt.registerLazySingleton(() => AuthService());
- // getIt.registerLazySingleton(() => StorageService());
+  // getIt.registerLazySingleton(() => StorageService());
 
   getIt.registerFactory(() => LoginModel());
 }
