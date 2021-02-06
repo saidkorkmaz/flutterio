@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterio/view_models/login_model.dart';
 import 'package:flutterio/views/investor/investor_home.dart';
 import 'package:flutterio/views/login.dart';
+import 'package:flutterio/views/seller/seller_home.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -29,9 +30,9 @@ class MyApp extends StatelessWidget {
           accentColor: Colors.redAccent,
         ),
         home: Consumer<LoginModel>(
-          builder: (BuildContext context, LoginModel signInModel,
+          builder: (BuildContext context, LoginModel loginModel,
                   Widget child) =>
-              signInModel.currentUser == null ? LoginPage() : InvestorHome(),
+              loginModel.currentUser == null ? LoginPage() : SellerHome(),
         ),
       ),
     );
