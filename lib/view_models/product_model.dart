@@ -15,8 +15,7 @@ class ProductModel extends BaseModel {
   Stream<QuerySnapshot> getProducts() {
     _ref = FirebaseFirestore.instance.collection('Person/docSeller/Products');
 
-    return _ref.snapshots();
-    //return _ref.orderBy('timeStamp').snapshots();
+    return _ref.orderBy('TIME_STAMP').snapshots();
   }
 
   Future<DocumentReference> addProduct(Map<String, dynamic> data) {
