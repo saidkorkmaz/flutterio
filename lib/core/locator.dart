@@ -1,5 +1,6 @@
 import 'package:flutterio/core/services/navigator_service.dart';
 import 'package:flutterio/core/services/storage_service.dart';
+import 'package:flutterio/core/services/user_service.dart';
 import 'package:flutterio/view_models/login_model.dart';
 import 'package:flutterio/view_models/product_model.dart';
 import 'package:get_it/get_it.dart';
@@ -12,6 +13,7 @@ setupLocators() {
   getIt.registerLazySingleton(() => NavigatorService());
   getIt.registerLazySingleton(() => AuthService());
   getIt.registerLazySingleton(() => StorageService());
+  getIt.registerLazySingleton(() => UserService());
 
   getIt.registerFactory(() => LoginModel());
   getIt.registerFactory(() => ProductModel());

@@ -23,7 +23,7 @@ class _SellerHomeState extends State<SellerHome> {
           },
         ),
 
-        body: Container()
+        body: Container(child: Center(child: Text("Seller Home"),),)
     );
   }
 }
