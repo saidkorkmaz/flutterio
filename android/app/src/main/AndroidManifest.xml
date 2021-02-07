@@ -18,7 +18,7 @@
         android:label="flutterio"
         android:icon="@mipmap/ic_launcher">
         <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY"/>
+            android:value="AIzaSyBvRF3KFe5BqlOUQaacXr88j0ODI1zPtXQ"/>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
