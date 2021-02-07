@@ -10,7 +10,7 @@ class RequirementDetail extends StatelessWidget {
 
     return Scaffold(
       body: Center(
-        child:Text(requirement.schoolName)
+        child:Text(requirement.products.name)
       ),
     );
   }
