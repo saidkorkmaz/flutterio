@@ -14,7 +14,9 @@ class SellerProfile extends StatefulWidget {
 class _SellerProfileState extends State<SellerProfile> {
 
   final _nameEditingController = TextEditingController();
-  String name;
+  final _addressEditingController = TextEditingController();
+  final _phoneEditingController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -32,12 +34,11 @@ class _SellerProfileState extends State<SellerProfile> {
                       if(!snapshot.hasData)
                       {
                         print("Veri yok");
-                        return Container();
+                        return Center(child: CircularProgressIndicator());
                       }
                       else
                       {
                         print("Veri var");
-                        print(snapshot.data.docs[0]["MARKET_NAME"]);
                         List<DocumentSnapshot> documents = snapshot.data.docs;
                         return Column(
                           children: [
@@ -46,6 +47,22 @@ class _SellerProfileState extends State<SellerProfile> {
                               controller: _nameEditingController,
                               decoration: InputDecoration(
                                   hintText: documents[0]["MARKET_NAME"]
+                              ),
+                            ),
+                            SizedBox(height: size.height*0.03,),
+                            Text("Adres"),
+                            TextField(
+                              controller: _addressEditingController,
+                              decoration: InputDecoration(
+                                  hintText: documents[0]["ADDRESS"]
+                              ),
+                            ),
+                            SizedBox(height: size.height*0.03,),
+                            Text("Telefon Numarası"),
+                            TextField(
+                              controller: _phoneEditingController,
+                              decoration: InputDecoration(
+                                  hintText: documents[0]["PHONE"]
                               ),
                             ),
                           ],
