@@ -18,7 +18,7 @@ class RequirementDetail extends StatelessWidget {
         Icon(iconName, color: Colors.grey,),
         Container(
           //height: 100,
-            width: screenWidth*.85,
+            width: screenWidth*.75,
             decoration: BoxDecoration(
                 color: Colors.white
             ),
@@ -43,36 +43,43 @@ class RequirementDetail extends StatelessWidget {
       create: (BuildContext context) => model,
       child: Scaffold(
         appBar: AppBar(
+
+          title: Text("Bağış Detayları"),
           leading: InkWell(
+
             child: Icon(
               Icons.arrow_back_ios,
-              color: Colors.grey,
+              color: Colors.white,
               size: 25,
             ),
             onTap: () => Navigator.pop(context),
           ),
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.green,
           elevation: 0,
         ),
         backgroundColor: Colors.white,
         body:
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal:12.0),
+            padding: const EdgeInsets.symmetric(horizontal:8.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   children: [
+                    SizedBox(height: 30,),
                     information(screenWidth, FontAwesomeIcons.school, "Okul Adı: ", requirement.schoolName),
                     information(screenWidth, FontAwesomeIcons.chalkboardTeacher, "Öğretmen Adı", requirement.teacherName),
+                    SizedBox(height: 10,),
+
                     requirement.length == null ?
                         Text("No Product"):
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Icon(FontAwesomeIcons.shoppingCart, color: Colors.grey,),
                         Container(
-                            width: screenWidth*.85,
+                            width: screenWidth*.75,
                             decoration: BoxDecoration(
                                 color: Colors.white
                             ),
@@ -126,25 +133,31 @@ class RequirementDetail extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(height: 30,),
                 requirement.totalPrice < 50 ?
                 Text("${50-requirement.totalPrice}₺ daha bağış yaparsan ${requirement.totalPrice~/50} fidan hediye!" ,style: TextStyle(color: Colors.black, fontSize: 15, fontFamily: "Quicksand-Regular"),textScaleFactor: 1):
                 Text("${requirement.totalPrice~/50} tane fidan kazanacaksın!" ,style: TextStyle(color: Colors.black, fontSize: 15, fontFamily: "Quicksand-Regular"),textScaleFactor: 1),
 
-                RaisedButton(
-                  child: Text("Bağış Yap"),
-                  onPressed: (){
-                    model.makeDonation(requirement.totalPrice, requirement.id);
-                    Fluttertoast.showToast(
-                        msg: "Bağış yapıldı!",
-                        timeInSecForIosWeb: 2,
-                        toastLength: Toast.LENGTH_SHORT,
-                        gravity: ToastGravity.BOTTOM,
-                        backgroundColor: Colors.grey[600],
-                        textColor: Colors.white,
-                        fontSize: 14);
-                    Navigator.pop(context);
-                  },
-                )
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: RaisedButton(
+                    color: Colors.green,
+
+                    child: Text("Bağış Yap",style: TextStyle(color: Colors.white)),
+                    onPressed: (){
+                      model.makeDonation(requirement.totalPrice, requirement.id);
+                      Fluttertoast.showToast(
+                          msg: "Bağış yapıldı!",
+                          timeInSecForIosWeb: 2,
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          backgroundColor: Colors.grey[600],
+                          textColor: Colors.white,
+                          fontSize: 14);
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
               ],
             ),
           ),
