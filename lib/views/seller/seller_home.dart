@@ -58,13 +58,13 @@ class _SellerHomeState extends State<SellerHome>  with SingleTickerProviderState
                       builder: (context, snapshot){
                         if(!snapshot.hasData)
                         {
-                          print("Veri yok");
+                        //  print("Veri yok");
                           return Container();
                         }
                         else
                         {
-                          print("Veri var");
-                          print(snapshot.data.docs[0]["MARKET_NAME"]);
+                         // print("Veri var");
+                         // print(snapshot.data.docs[0]["MARKET_NAME"]);
                           List<DocumentSnapshot> documents = snapshot.data.docs;
                           return Text(documents[0]["MARKET_NAME"]);
                         }

@@ -5,6 +5,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import '../../globals.dart';
+
 class ProductAdd extends StatefulWidget {
   @override
   _ProductAddState createState() => _ProductAddState();
@@ -13,6 +15,7 @@ class ProductAdd extends StatefulWidget {
 class _ProductAddState extends State<ProductAdd> {
   @override
   Widget build(BuildContext context) {
+    List<dynamic> productList = List();
     var size = MediaQuery.of(context).size;
     final TextEditingController _productNameController =
         TextEditingController();
@@ -94,18 +97,18 @@ class _ProductAddState extends State<ProductAdd> {
                         if (_productNameController.text.isNotEmpty &&
                             _productPriceController.text.isNotEmpty &&
                             model.mediaUrl.isNotEmpty) {
-                          await model.addProduct({
-                            'PRODUCT_NAME': _productNameController.text,
-                            'TIME_STAMP': DateTime.now(),
-                            'PRODUCT_PRICE': _productPriceController.text,
-                            'PRODUCT_IMAGE': model.mediaUrl
+                          productList.add({
+                            "NAME" : _productNameController.text,
+                            "PRICE" :  _productPriceController.text,
+                            "IMAGE" : model.mediaUrl
                           });
+                          await model.addProduct(productList);
                           Fluttertoast.showToast(
                               msg: "Ürün eklendi!",
                               timeInSecForIosWeb: 2,
                               toastLength: Toast.LENGTH_SHORT,
                               gravity: ToastGravity.BOTTOM,
-                              backgroundColor: Colors.grey[600],
+                              backgroundColor: Colors.green,
                               textColor: Colors.white,
                               fontSize: 14);
                           Navigator.pop(context);
@@ -115,14 +118,14 @@ class _ProductAddState extends State<ProductAdd> {
                               timeInSecForIosWeb: 2,
                               toastLength: Toast.LENGTH_SHORT,
                               gravity: ToastGravity.BOTTOM,
-                              backgroundColor: Colors.grey[600],
+                              backgroundColor: Colors.green,
                               textColor: Colors.white,
                               fontSize: 14);
                         }
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.red,
+                            color: colorSecondaryShade,
                             borderRadius: BorderRadius.all(Radius.circular(10))),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
