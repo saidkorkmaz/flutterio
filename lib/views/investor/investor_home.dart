@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutterio/core/locator.dart';
-import 'package:flutterio/models/requirement.dart';
-import 'package:flutterio/view_models/requirement_model.dart';
-import 'package:provider/provider.dart';
+import 'package:flutterio/views/investor/investor_profile.dart';
+import 'package:flutterio/views/investor/requirement_list.dart';
+import 'package:flutterio/views/seller/seller_profile.dart';
 
 class InvestorHome extends StatefulWidget {
   const  InvestorHome({Key key}) : super(key: key);
@@ -11,53 +10,51 @@ class InvestorHome extends StatefulWidget {
   _InvestorHomeState createState() => _InvestorHomeState();
 }
 
-class _InvestorHomeState extends State<InvestorHome> {
+class _InvestorHomeState extends State<InvestorHome> with SingleTickerProviderStateMixin {
+  TabController _tabController;
+  @override
+  void initState() {
+    _tabController = TabController(vsync: this, length: 2, initialIndex: 0);
+    _tabController.addListener(() {
+      setState(() {});
+    });
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    final model = getIt<RequirementModel>();
-
     return Scaffold(
-      appBar: AppBar(
-        title: Text("İhtiyaç Listeleri"),
-        backgroundColor: Colors.deepPurple ,
-      ),
-      body: ChangeNotifierProvider(
-        create: (context) => model,
-        child: StreamBuilder<List<Requirement>>(
-          stream: model.requirements(),
-          builder: (BuildContext context, stream) {
-
-
-            if (stream.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
-            }
-
-            return ListView(
-              children: stream.data
-                  .map(
-                    (requirement) => ListTile(
-                 /* leading: CircleAvatar(
-                      backgroundImage:
-                      NetworkImage(requirement)),*/
-                  title: Text(requirement.schoolName),
-                  subtitle:
-                  Container(child: Text(requirement.teacherName)),
-                  onTap: () {
-                    model.openDetailPage(requirement);
-                  },
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Text(requirement.totalPrice.toString() + " ₺"),
-
-                    ],
+     body:Container(
+        color: Colors.deepPurple,
+        child: SafeArea(
+          child:  Column(
+              children: <Widget>[
+                TabBar(
+                  controller: _tabController,
+                  tabs: <Widget>[
+                    Tab(
+                      text: "İhtiyaç Listeleri",
+                    ),
+                    Tab(
+                      text: "Profilim",
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: Container(
+                    color: Colors.white,
+                    child: TabBarView(
+                      controller: _tabController,
+                      children: <Widget>[
+                        RequirementList(),
+                        InvestorProfile(),
+                      ],
+                    ),
                   ),
                 ),
-              )
-                  .toList(),
-            );
-          },
-        ),
+              ],
+            ),
+          ),
+
       ),
     );
   }
