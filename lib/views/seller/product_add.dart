@@ -5,6 +5,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
+import '../../globals.dart';
+
 class ProductAdd extends StatefulWidget {
   @override
   _ProductAddState createState() => _ProductAddState();
@@ -106,7 +108,7 @@ class _ProductAddState extends State<ProductAdd> {
                               timeInSecForIosWeb: 2,
                               toastLength: Toast.LENGTH_SHORT,
                               gravity: ToastGravity.BOTTOM,
-                              backgroundColor: Colors.grey[600],
+                              backgroundColor: Colors.green,
                               textColor: Colors.white,
                               fontSize: 14);
                           Navigator.pop(context);
@@ -116,14 +118,14 @@ class _ProductAddState extends State<ProductAdd> {
                               timeInSecForIosWeb: 2,
                               toastLength: Toast.LENGTH_SHORT,
                               gravity: ToastGravity.BOTTOM,
-                              backgroundColor: Colors.grey[600],
+                              backgroundColor: Colors.green,
                               textColor: Colors.white,
                               fontSize: 14);
                         }
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                            color: Colors.red,
+                            color: colorSecondaryShade,
                             borderRadius: BorderRadius.all(Radius.circular(10))),
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
