@@ -4,9 +4,14 @@ import 'package:flutterio/models/requirement.dart';
 import 'package:flutterio/view_models/requirement_model.dart';
 import 'package:provider/provider.dart';
 
-class InvestorHome extends StatelessWidget {
+class InvestorHome extends StatefulWidget {
   const InvestorHome({Key key}) : super(key: key);
 
+  @override
+  _InvestorHomeState createState() => _InvestorHomeState();
+}
+
+class _InvestorHomeState extends State<InvestorHome> {
   @override
   Widget build(BuildContext context) {
     final model = getIt<RequirementModel>();
@@ -21,9 +26,7 @@ class InvestorHome extends StatelessWidget {
         child: StreamBuilder<List<Requirement>>(
           stream: model.requirements(),
           builder: (BuildContext context, stream) {
-            if (stream.hasError) {
-              return Text('Error: ${stream.error}');
-            }
+
 
             if (stream.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());

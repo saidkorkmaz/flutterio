@@ -11,6 +11,4 @@ class RequirementService {
     return requirements.docs.map((snapshot) => Requirement.fromSnapshot(snapshot)).toList();
   }
 
-
-
 }
