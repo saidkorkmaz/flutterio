@@ -15,8 +15,8 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="flutterio"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Greenucation"
+        android:icon="@drawable/logo">
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBvRF3KFe5BqlOUQaacXr88j0ODI1zPtXQ"/>
         <activity

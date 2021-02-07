@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterio/core/locator.dart';
 import 'package:flutterio/core/services/navigator_service.dart';
 import 'package:flutterio/globals.dart';
+import 'package:flutterio/view_models/login_model.dart';
 import 'package:flutterio/view_models/product_model.dart';
 import 'package:flutterio/views/teacher/list_seller_products.dart';
 import 'package:flutterio/views/teacher/showCart.dart';
@@ -18,28 +19,42 @@ class _TeacherHomeState extends State<TeacherHome> {
   var productModel = getIt<ProductModel>();
   @override
   Widget build(BuildContext context) {
+    var outModel = getIt<LoginModel>();
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Marketler"),
-        actions: [IconButton(icon: Icon(Icons.shopping_bag_outlined), onPressed: (){
-          print("Sepete basıldı");
+        actions: [Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: InkWell(
+                  onTap: (){
+                    outModel.signOut();
+                  },
+                  child: Icon(Icons.close) ),
+            ),
+            IconButton(icon: Icon(Icons.shopping_bag_outlined), onPressed: (){
+              print("Sepete basıldı");
 
-          if(cart == null || cart.isEmpty)
-            {
-              Fluttertoast.showToast(
-                  msg: "Henüz ürün eklemediniz",
-                  timeInSecForIosWeb: 2,
-                  toastLength: Toast.LENGTH_SHORT,
-                  gravity: ToastGravity.TOP,
-                  backgroundColor: Colors.grey[600],
-                  textColor: Colors.white,
-                  fontSize: 14);
-            }
-          else{
-            model.navigateTo(ShowCart());
-          }
+              if(cart == null || cart.isEmpty)
+                {
+                  Fluttertoast.showToast(
+                      msg: "Henüz ürün eklemediniz",
+                      timeInSecForIosWeb: 2,
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.TOP,
+                      backgroundColor: Colors.grey[600],
+                      textColor: Colors.white,
+                      fontSize: 14);
+                }
+              else{
+                model.navigateTo(ShowCart());
+              }
 
-        })],
+            }),
+          ],
+        )],
       ),
         body:
         Container(
