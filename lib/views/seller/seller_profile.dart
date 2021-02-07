@@ -1,10 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterio/core/locator.dart';
-import 'package:flutterio/view_models/login_model.dart';
 import 'package:flutterio/view_models/product_model.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:provider/provider.dart';
+
+import '../../globals.dart';
 
 class SellerProfile extends StatefulWidget {
   @override
@@ -42,29 +41,30 @@ class _SellerProfileState extends State<SellerProfile> {
                         List<DocumentSnapshot> documents = snapshot.data.docs;
                         return Column(
                           children: [
-                            Text("Firma adı"),
                             TextField(
                               controller: _nameEditingController,
                               decoration: InputDecoration(
-                                  hintText: documents[0]["MARKET_NAME"]
+                                  hintText: documents[0]["MARKET_NAME"],
+                                prefixIcon: Icon(Icons.person, color:colorSecondaryTint)
                               ),
                             ),
-                            SizedBox(height: size.height*0.03,),
-                            Text("Adres"),
+
                             TextField(
-                              controller: _addressEditingController,
+                              controller: _nameEditingController,
                               decoration: InputDecoration(
-                                  hintText: documents[0]["ADDRESS"]
+                                  hintText: documents[0]["PHONE"],
+                                  prefixIcon: Icon(Icons.phone, color:colorSecondaryTint)
                               ),
                             ),
-                            SizedBox(height: size.height*0.03,),
-                            Text("Telefon Numarası"),
+
                             TextField(
-                              controller: _phoneEditingController,
+                              controller: _nameEditingController,
                               decoration: InputDecoration(
-                                  hintText: documents[0]["PHONE"]
+                                  hintText: documents[0]["ADDRESS"],
+                                  prefixIcon: Icon(Icons.home, color:colorSecondaryTint)
                               ),
                             ),
+
                           ],
                         );
                       }
@@ -87,7 +87,7 @@ class _SellerProfileState extends State<SellerProfile> {
                    child: Container(
                      height: size.height*0.05,
                      decoration: BoxDecoration(
-                         color: Colors.red,
+                         color: colorSecondaryShade,
                          borderRadius: BorderRadius.all(
                              Radius.circular(10))),
                      child: Padding(
