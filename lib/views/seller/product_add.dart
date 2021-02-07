@@ -13,6 +13,7 @@ class ProductAdd extends StatefulWidget {
 class _ProductAddState extends State<ProductAdd> {
   @override
   Widget build(BuildContext context) {
+    List<dynamic> productList = List();
     var size = MediaQuery.of(context).size;
     final TextEditingController _productNameController =
         TextEditingController();
@@ -94,12 +95,12 @@ class _ProductAddState extends State<ProductAdd> {
                         if (_productNameController.text.isNotEmpty &&
                             _productPriceController.text.isNotEmpty &&
                             model.mediaUrl.isNotEmpty) {
-                          await model.addProduct({
-                            'PRODUCT_NAME': _productNameController.text,
-                            'TIME_STAMP': DateTime.now(),
-                            'PRODUCT_PRICE': _productPriceController.text,
-                            'PRODUCT_IMAGE': model.mediaUrl
+                          productList.add({
+                            "NAME" : _productNameController.text,
+                            "PRICE" :  _productPriceController.text,
+                            "IMAGE" : model.mediaUrl
                           });
+                          await model.addProduct(productList);
                           Fluttertoast.showToast(
                               msg: "Ürün eklendi!",
                               timeInSecForIosWeb: 2,

@@ -1,13 +1,10 @@
-
-
 class Product {
   String id;
   String name;
   String image;
-  String qty;
   int price;
 
-  Product({this.id, this.name, this.image, this.qty, this.price});
+  Product({this.id, this.name, this.image, this.price});
   fromMap(Map<String, dynamic> map){
     this.id = "0";
     this.name = map["NAME"];

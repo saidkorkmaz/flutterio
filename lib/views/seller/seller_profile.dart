@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterio/core/locator.dart';
 import 'package:flutterio/view_models/product_model.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../globals.dart';
 
@@ -26,19 +27,19 @@ class _SellerProfileState extends State<SellerProfile> {
           padding: const EdgeInsets.all(20.0),
           child: Stack(
             children: [
-
               FutureBuilder(
                     future: sellerModel.getSellers(),
                     builder: (context, snapshot){
                       if(!snapshot.hasData)
                       {
-                        print("Veri yok");
+                        //print("Veri yok");
                         return Center(child: CircularProgressIndicator());
                       }
                       else
                       {
-                        print("Veri var");
+                        //print("Veri var");
                         List<DocumentSnapshot> documents = snapshot.data.docs;
+                       print(documents[0]);
                         return Column(
                           children: [
                             TextField(
@@ -50,7 +51,7 @@ class _SellerProfileState extends State<SellerProfile> {
                             ),
 
                             TextField(
-                              controller: _nameEditingController,
+                              controller: _addressEditingController,
                               decoration: InputDecoration(
                                   hintText: documents[0]["PHONE"],
                                   prefixIcon: Icon(Icons.phone, color:colorSecondaryTint)
@@ -58,7 +59,7 @@ class _SellerProfileState extends State<SellerProfile> {
                             ),
 
                             TextField(
-                              controller: _nameEditingController,
+                              controller: _phoneEditingController,
                               decoration: InputDecoration(
                                   hintText: documents[0]["ADDRESS"],
                                   prefixIcon: Icon(Icons.home, color:colorSecondaryTint)

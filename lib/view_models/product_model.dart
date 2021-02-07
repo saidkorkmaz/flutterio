@@ -16,17 +16,20 @@ class ProductModel extends BaseModel {
   String mediaUrl = '';
 
   Stream<QuerySnapshot> getProducts() {
-    _ref = FirebaseFirestore.instance.collection('Users/id/');
+    _ref = FirebaseFirestore.instance.collection('Users/');
 
     return _ref.where('PRODUCT').snapshots();
   }
 
-  Future<DocumentReference> addProduct(Map<String, dynamic> data) {
+  Future<void> addProduct(List<dynamic> data) {
     mediaUrl = '';
-
+//OJaDzeJXd5QvKWG66sfa9QStzyq2
+    _ref = FirebaseFirestore.instance.collection('Users');
     notifyListeners();
 
-    return _ref.add(data);
+    return _ref.doc('OJaDzeJXd5QvKWG66sfa9QStzyq2').update({
+      "PRODUCTS" : FieldValue.arrayUnion(data)
+    });
   }
 
   uploadMedia(ImageSource source) async {
