@@ -1,9 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutterio/models/product.dart';
 
 class Requirement {
   String id;
-  List products;
+  var products;
   String teacherName;
   String schoolName;
   int totalPrice;

@@ -1,5 +1,6 @@
 import 'package:flutterio/core/locator.dart';
 import 'package:flutterio/core/services/requirement_service.dart';
+import 'package:flutterio/models/product.dart';
 import 'package:flutterio/models/requirement.dart';
 import 'package:flutterio/views/investor/requirement_detail.dart';
 
@@ -15,7 +16,14 @@ class RequirementModel extends BaseModel {
   }
   Future<void> openDetailPage(Requirement requirement) async {
     busy = true;
-    await navigatorService.navigateToReplace(RequirementDetail(requirement: requirement));
+    Product tempProduct = Product();
+    print(requirement.products);
+
+    tempProduct.fromMap(requirement.products[0]);
+    requirement.products = null;
+    requirement.products = tempProduct;
+
+    await navigatorService.navigateTo(RequirementDetail(requirement: requirement));
     busy = false;
   }
 
