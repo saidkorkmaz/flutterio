@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterio/core/locator.dart';
 import 'package:flutterio/globals.dart';
 import 'package:flutterio/view_models/requirement_model.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class ShowCart extends StatefulWidget {
   @override
@@ -67,6 +68,16 @@ class _ShowCartState extends State<ShowCart> {
               onPressed: (){
                 print("Onayla butonuna basıldı. Öğretmen okulu : ${currentTeacher.school}");
                 model.addRequirement(cart, currentTeacher.school, currentTeacher.name);
+                cart = null;
+                Fluttertoast.showToast(
+                    msg: "İhtiyaç listeniz gönüllülerle paylaşılmak üzere kaydedildi",
+                    timeInSecForIosWeb: 2,
+                    toastLength: Toast.LENGTH_LONG,
+                    gravity: ToastGravity.CENTER,
+                    backgroundColor: Colors.green,
+                    textColor: Colors.white,
+                    fontSize: 14);
+                Navigator.pop(context);
               })
         ],
       )
