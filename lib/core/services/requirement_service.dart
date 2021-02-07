@@ -16,6 +16,4 @@ class RequirementService {
     _firestore.collection("Requirements").add({"PRODUCT_LIST": products, "SCHOOL_NAME" : schoolName, "TEACHER_NAME":teacherName, "TOTAL_PRICE":totalPrice});
   }
 
-
-
 }

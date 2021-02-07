@@ -18,12 +18,15 @@ class RequirementModel extends BaseModel {
     busy = true;
     Product tempProduct = Product();
     print(requirement.products);
+    if(requirement.length == null){
+      requirement.length  = requirement.products.length;
+      tempProduct.fromMap(requirement.products[0]);
+      requirement.products = null;
+      requirement.products = tempProduct;
+    }
 
-    tempProduct.fromMap(requirement.products[0]);
-    requirement.products = null;
-    requirement.products = tempProduct;
 
-    await navigatorService.navigateTo(RequirementDetail(requirement: requirement));
+    await navigatorService.navigateTo(RequirementDetail(requirement: requirement, length: requirement.length));
     busy = false;
   }
 
