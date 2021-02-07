@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutterio/models/product.dart';
 import 'package:flutterio/models/requirement.dart';
 
 
