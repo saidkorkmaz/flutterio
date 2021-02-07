@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterio/core/locator.dart';
 import 'package:flutterio/globals.dart';
 import 'package:flutterio/view_models/requirement_model.dart';
 
@@ -8,7 +9,7 @@ class ShowCart extends StatefulWidget {
 }
 
 class _ShowCartState extends State<ShowCart> {
-  RequirementModel _requirementModel = RequirementModel();
+  var model = getIt<RequirementModel>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,7 +55,7 @@ class _ShowCartState extends State<ShowCart> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text("Total",style: TextStyle(fontWeight: FontWeight.bold),),
-                    Text(_requirementModel.calculateTotalPrice(cart).toString() + " ₺",style: TextStyle(fontWeight: FontWeight.bold),),
+                    Text(model.calculateTotalPrice(cart).toString() + " ₺",style: TextStyle(fontWeight: FontWeight.bold),),
                   ],
                 ),
               )
@@ -65,7 +66,7 @@ class _ShowCartState extends State<ShowCart> {
             child: Text("Onayla",style: TextStyle(color: Colors.white),),
               onPressed: (){
                 print("Onayla butonuna basıldı. Öğretmen okulu : ${currentTeacher.school}");
-                _requirementModel.addRequirement(cart, currentTeacher.school, currentTeacher.name);
+                model.addRequirement(cart, currentTeacher.school, currentTeacher.name);
               })
         ],
       )

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterio/core/locator.dart';
 import 'package:flutterio/core/services/cart_service.dart';
 import 'package:flutterio/globals.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -15,7 +16,7 @@ class ListSellerProducts extends StatefulWidget {
 class _ListSellerProductsState extends State<ListSellerProducts> {
 
   List products;
-  CartService _cartService = CartService();
+  var cartService = getIt<CartService>();
 
   @override
   void initState() {
@@ -37,7 +38,7 @@ class _ListSellerProductsState extends State<ListSellerProducts> {
             return
               InkWell(
                 onTap: () {
-                  _cartService.addCart(products[index]["NAME"], products[index]["IMAGE"], int.parse(products[index]["PRICE"].toString()));
+                  cartService.addCart(products[index]["NAME"], products[index]["IMAGE"], int.parse(products[index]["PRICE"].toString()));
                   Fluttertoast.showToast(
                       msg: "Ürün sepete eklendi",
                       timeInSecForIosWeb: 2,
