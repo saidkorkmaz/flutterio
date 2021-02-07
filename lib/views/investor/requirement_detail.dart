@@ -126,6 +126,10 @@ class RequirementDetail extends StatelessWidget {
                     ),
                   ],
                 ),
+                requirement.totalPrice < 50 ?
+                Text("${50-requirement.totalPrice}₺ daha bağış yaparsan sana bir fidan edeceğiz" ,style: TextStyle(color: Colors.black, fontSize: 15, fontFamily: "Quicksand-Regular"),textScaleFactor: 1):
+                Text("${requirement.totalPrice~/50} tane fidan kazanacaksın!" ,style: TextStyle(color: Colors.black, fontSize: 15, fontFamily: "Quicksand-Regular"),textScaleFactor: 1),
+
                 RaisedButton(
                   child: Text("Bağış Yap"),
                   onPressed: (){
