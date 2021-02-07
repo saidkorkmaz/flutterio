@@ -7,6 +7,7 @@ import 'package:flutterio/core/services/user_service.dart';
 import 'package:flutterio/view_models/login_model.dart';
 import 'package:flutterio/view_models/product_model.dart';
 import 'package:flutterio/view_models/requirement_model.dart';
+import 'package:flutterio/view_models/seller_model.dart';
 import 'package:get_it/get_it.dart';
 
 import 'services/authentication_service.dart';
@@ -25,4 +26,5 @@ setupLocators() {
   getIt.registerFactory(() => LoginModel());
   getIt.registerFactory(() => ProductModel());
   getIt.registerFactory(() => RequirementModel());
+  getIt.registerFactory(() => SellerModel());
 }

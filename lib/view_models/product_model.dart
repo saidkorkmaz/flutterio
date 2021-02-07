@@ -23,7 +23,6 @@ class ProductModel extends BaseModel {
 
   Future<void> addProduct(List<dynamic> data) {
     mediaUrl = '';
-//OJaDzeJXd5QvKWG66sfa9QStzyq2
     _ref = FirebaseFirestore.instance.collection('Users');
     notifyListeners();
 
