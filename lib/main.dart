@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterio/globals.dart';
 import 'package:flutterio/view_models/login_model.dart';
 import 'package:flutterio/views/login.dart';
 import 'package:provider/provider.dart';
@@ -26,8 +27,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           fontFamily: "QuickSand-Medium",
           //canvasColor: Colors.transparent
-          primaryColor: Colors.red,
-          accentColor: Colors.redAccent,
+          primaryColor: colorPrimaryShade,
+          accentColor: colorPrimary,
         ),
         home: Consumer<LoginModel>(
           builder: (BuildContext context, LoginModel loginModel,
