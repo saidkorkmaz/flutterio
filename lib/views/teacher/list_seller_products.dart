@@ -37,7 +37,7 @@ class _ListSellerProductsState extends State<ListSellerProducts> {
             return
               InkWell(
                 onTap: () {
-                  _cartService.addCart(products[index]["NAME"], products[index]["IMAGE"], double.parse(products[index]["PRICE"].toString()));
+                  _cartService.addCart(products[index]["NAME"], products[index]["IMAGE"], int.parse(products[index]["PRICE"].toString()));
                   Fluttertoast.showToast(
                       msg: "Ürün sepete eklendi",
                       timeInSecForIosWeb: 2,

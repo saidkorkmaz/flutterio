@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutterio/core/locator.dart';
 import 'package:flutterio/core/services/authentication_service.dart';
 import 'package:flutterio/core/services/user_service.dart';
+import 'package:flutterio/globals.dart';
+import 'package:flutterio/models/teacher.dart';
 import 'package:flutterio/views/investor/investor_home.dart';
 import 'package:flutterio/views/login.dart';
 import 'package:flutterio/views/seller/seller_home.dart';
@@ -48,6 +50,8 @@ class LoginModel extends BaseModel {
     if(userData.data()["TYPE"] == "SELLER"){
       navigatePage = SellerHome(); //print("SELLER");
     }else if(userData.data()["TYPE"] == "TEACHER"){
+      currentTeacher = Teacher();
+      currentTeacher.fromMap(userData.data());
       navigatePage = TeacherHome(); //print("TEACHER");
     }else if(userData.data()["TYPE"] == "INVESTOR"){
       navigatePage = InvestorHome(); //print("INVESTOR");

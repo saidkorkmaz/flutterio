@@ -35,5 +35,27 @@ class RequirementModel extends BaseModel {
     return (await _chatService.getRequirements())
         .toList();
   }*/
+
+
+   addRequirement(List<Product> products, String schoolName, String teacherName){
+     int totalPrice = calculateTotalPrice(products);
+    _requirementService.addRequirement(cartToMap(products), schoolName, teacherName, totalPrice);
+  }
+  
+  cartToMap(List<Product> prod){
+     List productList = List();
+  prod.forEach((element) {
+    productList.add({"NAME" : element.name, "PRICE": element.price, "IMAGE":element.image});
+  });
+  return productList;
+   }
+
+  calculateTotalPrice(List<Product> products){
+    int totalPrice=0;
+    products.forEach(( element) {
+      totalPrice += element.price;
+    });
+    return totalPrice;
+  }
 }
 
