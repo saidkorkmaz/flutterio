@@ -14,8 +14,8 @@ class TeacherHome extends StatefulWidget {
 }
 
 class _TeacherHomeState extends State<TeacherHome> {
-  ProductModel _productModel = ProductModel();
   var model = getIt<NavigatorService>();
+  var productModel = getIt<ProductModel>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +44,7 @@ class _TeacherHomeState extends State<TeacherHome> {
         body:
         Container(
           child: FutureBuilder(
-            future: _productModel.getSellers(),
+            future: productModel.getSellers(),
             builder: (context, snapshot){
               if(!snapshot.hasData)
                 {
