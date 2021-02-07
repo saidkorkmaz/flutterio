@@ -63,6 +63,19 @@ flutter:
   assets:
     - assets/images/
   #   - images/a_dot_ham.jpeg
+  fonts:
+    - family: Quicksand-Light
+      fonts:
+        - asset: assets/fonts/Quicksand-Light.ttf
+    - family: Quicksand-Medium
+      fonts:
+        - asset: assets/fonts/Quicksand-Medium.ttf
+    - family: Quicksand-Regular
+      fonts:
+        - asset: assets/fonts/Quicksand-Regular.ttf
+    - family: Quicksand-SemiBold
+      fonts:
+        - asset: assets/fonts/Quicksand-SemiBold.ttf
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
