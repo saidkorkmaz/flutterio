@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutterio/models/product.dart';
 
 class Requirement {
   String id;
@@ -20,8 +21,8 @@ class Requirement {
     return Requirement(
       snapshot.id,
       snapshot.data()['PRODUCT_LIST'],
-      snapshot.data()['SCHOOL_NAME'],
       snapshot.data()['TEACHER_NAME'],
+      snapshot.data()['SCHOOL_NAME'],
       snapshot.data()['TOTAL_PRICE'],
     );
   }
