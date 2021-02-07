@@ -5,7 +5,7 @@ import 'package:flutterio/view_models/requirement_model.dart';
 import 'package:provider/provider.dart';
 
 class InvestorHome extends StatefulWidget {
-  const InvestorHome({Key key}) : super(key: key);
+  const  InvestorHome({Key key}) : super(key: key);
 
   @override
   _InvestorHomeState createState() => _InvestorHomeState();

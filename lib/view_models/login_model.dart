@@ -3,6 +3,7 @@ import 'package:flutterio/core/locator.dart';
 import 'package:flutterio/core/services/authentication_service.dart';
 import 'package:flutterio/core/services/user_service.dart';
 import 'package:flutterio/globals.dart';
+import 'package:flutterio/models/investor.dart';
 import 'package:flutterio/models/teacher.dart';
 import 'package:flutterio/views/investor/investor_home.dart';
 import 'package:flutterio/views/login.dart';
@@ -24,6 +25,7 @@ class LoginModel extends BaseModel {
       print("User id :${user.uid}");
       await getUser(user.uid);
     } catch (e) {
+      print("HATA: $e");
       busy = false;
     }
 
@@ -46,15 +48,19 @@ class LoginModel extends BaseModel {
    getUser(String userId) async {
     var userData = await _userService.getUserData(userId);
     var navigatePage;
+    print("type: ${userData.data()["TYPE"]}");
     print("User TYPE : ${userData.data()["TYPE"]}");
+
     if(userData.data()["TYPE"] == "SELLER"){
-      navigatePage = SellerHome(); //print("SELLER");
+      navigatePage = SellerHome(); print("SELLER");
     }else if(userData.data()["TYPE"] == "TEACHER"){
       currentTeacher = Teacher();
       currentTeacher.fromMap(userData.data());
-      navigatePage = TeacherHome(); //print("TEACHER");
+      navigatePage = TeacherHome(); print("TEACHER");
     }else if(userData.data()["TYPE"] == "INVESTOR"){
-      navigatePage = InvestorHome(); //print("INVESTOR");
+      currentInvestor = Investor();
+      currentInvestor.fromMap(userData.data(), userData.id);
+      navigatePage = InvestorHome(); print("INVESTOR");
     }
     return await navigatorService.navigateToReplace(navigatePage);
   }

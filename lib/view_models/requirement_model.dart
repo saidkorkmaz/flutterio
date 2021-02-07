@@ -1,5 +1,7 @@
 import 'package:flutterio/core/locator.dart';
 import 'package:flutterio/core/services/requirement_service.dart';
+import 'package:flutterio/core/services/user_service.dart';
+import 'package:flutterio/globals.dart';
 import 'package:flutterio/models/product.dart';
 import 'package:flutterio/models/requirement.dart';
 import 'package:flutterio/views/investor/requirement_detail.dart';
@@ -9,6 +11,7 @@ import 'base_model.dart';
 
 class RequirementModel extends BaseModel {
   final  RequirementService _requirementService = getIt<RequirementService>();
+  final  UserService _userService = getIt<UserService>();
 
 
   Stream<List<Requirement>> requirements() {
@@ -29,6 +32,7 @@ class RequirementModel extends BaseModel {
     await navigatorService.navigateTo(RequirementDetail(requirement: requirement, length: requirement.length));
     busy = false;
   }
+
 
 
  /* Future<List<Requirement>> filterProfiles(String filter) async {
@@ -56,6 +60,10 @@ class RequirementModel extends BaseModel {
       totalPrice += element.price;
     });
     return totalPrice;
+  }
+
+   makeDonation(int totalPrice) async {
+    return await _userService.saveTotalAmount(currentInvestor.id, (currentInvestor.totalAmount+totalPrice));
   }
 }
 

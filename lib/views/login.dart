@@ -62,6 +62,7 @@ class LoginPage extends StatelessWidget {
                                 onTap: () async => await model.signIn(
                                     _emailController.text,
                                     _passwordController.text),
+
                                 child: Container(
                                   decoration: BoxDecoration(
                                       color: Colors.red,
