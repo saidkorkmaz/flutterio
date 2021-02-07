@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class PlantsMap extends StatefulWidget {
-//  final LatLng point;
- // final String status;
-
- // PlantsMap(this.point, this.status);
+  final int plantsQty;
+  PlantsMap(this.plantsQty);
 
   @override
   _PlantsMapState createState() => _PlantsMapState();
@@ -14,6 +12,13 @@ class PlantsMap extends StatefulWidget {
 class _PlantsMapState extends State<PlantsMap> {
   bool isLoading = true;
   GoogleMapController _mapController;
+  LatLng capital = LatLng(39.9334, 32.8597);
+  LatLng centerOfTurkey = LatLng(39.1702, 35.1430);
+  LatLng oldCity = LatLng(39.1702, 35.1430);
+  LatLng secondCity = LatLng(41.0082 , 28.9784);
+  List idList = ["point", "point2", "point3"];
+  List titleList = ["Ankara", "İstanbul", "Eskişehir"];
+
 
   @override
   void initState() {
@@ -51,7 +56,7 @@ class _PlantsMapState extends State<PlantsMap> {
 
           mapType: MapType.normal,
           initialCameraPosition:
-          CameraPosition(target:  LatLng(-38.956176, -67.920666), zoom: 20.0),
+          CameraPosition(target:  centerOfTurkey, zoom: 4.7),
           //polyline,
           onMapCreated: onMapCreated,
           markers: _createMarkers(),
@@ -71,7 +76,6 @@ class _PlantsMapState extends State<PlantsMap> {
     var bitmap = await BitmapDescriptor.fromAssetImage(
         imageConfiguration, 'assets/images/plant.png');
 
-    print(plantIcon);
     setState(() {
       plantIcon = bitmap;
 
@@ -79,16 +83,21 @@ class _PlantsMapState extends State<PlantsMap> {
   }
 
   Set<Marker> _createMarkers() {
-    var markers = Set<Marker>();
+    List<LatLng> positionList = [capital, secondCity, oldCity];
 
-    markers.add(
-      Marker(
-          markerId: MarkerId("point"),
-          position:  LatLng(-38.956176, -67.920666),
-          infoWindow: InfoWindow(title: "plant"),
-          zIndex: 0,
-          icon: plantIcon),
-    );
+    var markers = Set<Marker>();
+    for(int i=0; i<widget.plantsQty; i++){
+      markers.add(
+        Marker(
+            markerId: MarkerId(idList[i]),
+            position:  positionList[i],
+            infoWindow: InfoWindow(title: titleList[i]),
+            zIndex: 2,
+            icon: plantIcon),
+      );
+    }
+
+
     return markers;
   }
 }
