@@ -133,7 +133,7 @@ class RequirementDetail extends StatelessWidget {
                 RaisedButton(
                   child: Text("Bağış Yap"),
                   onPressed: (){
-                    model.makeDonation(requirement.totalPrice);
+                    model.makeDonation(requirement.totalPrice, requirement.id);
                     Fluttertoast.showToast(
                         msg: "Bağış yapıldı!",
                         timeInSecForIosWeb: 2,

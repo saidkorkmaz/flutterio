@@ -12,8 +12,12 @@ class _InvestorProfileState extends State<InvestorProfile> {
   int plantsQty = currentInvestor.totalAmount~/50;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Container(
-      child: Center(
+    return Scaffold(body:
+
+    Container(
+      child:
+
+      Center(
 
 
         child: Column(
@@ -39,6 +43,9 @@ class _InvestorProfileState extends State<InvestorProfile> {
         ),
       )
 
-    ));
+    )
+
+
+    );
   }
 }
