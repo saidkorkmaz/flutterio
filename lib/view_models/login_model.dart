@@ -20,16 +20,7 @@ class LoginModel extends BaseModel {
     try {
       var user = await _authService.signIn(email, password);
       print("User id :${user.uid}");
-      var userData = await _userService.getUserData(user.uid);
-      var navigatePage;
-      if(userData.data()["TYPE"] == "SELLER"){
-        navigatePage = SellerHome(); //print("SELLER");
-      }else if(userData.data()["TYPE"] == "TEACHER"){
-        navigatePage = TeacherHome(); //print("TEACHER");
-      }else if(userData.data()["TYPE"] == "INVESTOR"){
-        navigatePage = InvestorHome(); //print("INVESTOR");
-      }
-      await navigatorService.navigateToReplace(navigatePage);
+      await getUser(user.uid);
     } catch (e) {
       busy = false;
     }
@@ -48,5 +39,19 @@ class LoginModel extends BaseModel {
     }
 
     busy = false;
+  }
+
+   getUser(String userId) async {
+    var userData = await _userService.getUserData(userId);
+    var navigatePage;
+    print("User TYPE : ${userData.data()["TYPE"]}");
+    if(userData.data()["TYPE"] == "SELLER"){
+      navigatePage = SellerHome(); //print("SELLER");
+    }else if(userData.data()["TYPE"] == "TEACHER"){
+      navigatePage = TeacherHome(); //print("TEACHER");
+    }else if(userData.data()["TYPE"] == "INVESTOR"){
+      navigatePage = InvestorHome(); //print("INVESTOR");
+    }
+    return await navigatorService.navigateToReplace(navigatePage);
   }
 }
