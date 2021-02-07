@@ -59,22 +59,31 @@ class LoginPage extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
 
+
                                       TextField(
                                           controller: _emailController,
+                                          style: TextStyle(color: Colors.white, fontFamily: "Quicksand-SemiBold"),
+                                          cursorColor: colorLight,
                                           keyboardType: TextInputType.emailAddress,
                                           decoration: InputDecoration(
                                             prefixIcon: Icon(
                                               Icons.mail,
                                               color: colorPrimaryShade,
                                             ),
-                                            hintText: 'Mail adresi',
+                                            hintText: 'E-Mail',
                                             prefixText: ' ',
-                                            hintStyle: TextStyle(color: Colors.white)
+                                            hintStyle: TextStyle(color: Colors.white, fontFamily: "Quicksand-Light"),
+                                            focusColor: colorLightTint,
+                                            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: colorLightTint)),
+                                            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: colorSecondaryShade)),
+
                                           )),
                                       SizedBox(
                                         height: size.height * 0.02,
                                       ),
                                       TextField(
+                                          style: TextStyle(color: Colors.white, fontFamily: "Quicksand-SemiBold"),
+                                          cursorColor: colorLight,
                                           controller: _passwordController,
                                           obscureText: true,
                                           decoration: InputDecoration(
@@ -84,10 +93,15 @@ class LoginPage extends StatelessWidget {
                                             ),
                                             hintText: 'Parola',
                                             prefixText: ' ',
-                                              hintStyle: TextStyle(color: Colors.white)
+
+
+                                              hintStyle: TextStyle(color: Colors.white, fontFamily: "Quicksand-Light"),
+                                            focusColor: colorLightTint,
+                                            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: colorLightTint)),
+                                            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: colorSecondaryShade)),
                                           )),
                                       SizedBox(
-                                        height: size.height * 0.04,
+                                        height: size.height * 0.08,
                                       ),
                                       InkWell(
                                         onTap: () async => await model.signIn(
@@ -95,7 +109,7 @@ class LoginPage extends StatelessWidget {
                                             _passwordController.text),
 
                                         child: Container(
-                                          padding: EdgeInsets.symmetric(vertical: 8),
+                                          padding: EdgeInsets.symmetric(vertical: 5),
                                           decoration: BoxDecoration(
                                             border: Border.all(color:Colors.white,width: 2),
                                               //color: colorPrimaryShade,
@@ -106,7 +120,7 @@ class LoginPage extends StatelessWidget {
                                             child: Center(
                                                 child: Text(
                                               "Giriş yap",
-                                              style: TextStyle(color: Colors.white, fontSize: 17),
+                                              style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: "Quicksand-SemiBold"),
                                             )),
                                           ),
                                         ),

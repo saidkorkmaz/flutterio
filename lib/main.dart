@@ -24,6 +24,8 @@ class MyApp extends StatelessWidget {
         title: 'Fluttrio',
         navigatorKey: getIt<NavigatorService>().navigatorKey,
         theme: ThemeData(
+          fontFamily: "QuickSand-Medium",
+          //canvasColor: Colors.transparent
           primaryColor: Colors.red,
           accentColor: Colors.redAccent,
         ),
