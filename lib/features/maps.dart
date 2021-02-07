@@ -16,8 +16,10 @@ class _PlantsMapState extends State<PlantsMap> {
   LatLng centerOfTurkey = LatLng(39.1702, 35.1430);
   LatLng oldCity = LatLng(39.1702, 35.1430);
   LatLng secondCity = LatLng(41.0082 , 28.9784);
-  List idList = ["point", "point2", "point3"];
-  List titleList = ["Ankara", "İstanbul", "Eskişehir"];
+  LatLng thirdCity = LatLng(36.8969 , 30.7133 );
+  LatLng fourthCity = LatLng( 38.4237 , 27.1428 );
+  List idList = ["point", "point2", "point3","point4", "point5", "point6"];
+  List titleList = ["Ankara", "İstanbul", "Eskişehir","Yozgat", "Antalya", "İzmir",];
 
 
   @override
@@ -83,7 +85,7 @@ class _PlantsMapState extends State<PlantsMap> {
   }
 
   Set<Marker> _createMarkers() {
-    List<LatLng> positionList = [capital, secondCity, oldCity];
+    List<LatLng> positionList = [capital, secondCity, oldCity,centerOfTurkey,thirdCity,fourthCity];
 
     var markers = Set<Marker>();
     for(int i=0; i<widget.plantsQty; i++){

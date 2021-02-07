@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterio/core/locator.dart';
+import 'package:flutterio/globals.dart';
 import 'package:flutterio/models/requirement.dart';
 import 'package:flutterio/view_models/requirement_model.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,7 @@ class _RequirementListState extends State<RequirementList> {
             return ListView(
               children: stream.data
                   .map(
-                    (requirement) => ListTile(
+                    (requirement) =>  requirement.status == true ?ListTile(
                   /* leading: CircleAvatar(
                       backgroundImage:
                       NetworkImage(requirement)),*/
@@ -49,7 +50,8 @@ class _RequirementListState extends State<RequirementList> {
 
                     ],
                   ),
-                ),
+                ):
+                Container(),
               )
                   .toList(),
             );

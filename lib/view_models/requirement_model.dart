@@ -62,8 +62,10 @@ class RequirementModel extends BaseModel {
     return totalPrice;
   }
 
-   makeDonation(int totalPrice) async {
-    return await _userService.saveTotalAmount(currentInvestor.id, (currentInvestor.totalAmount+totalPrice));
+   makeDonation(int totalPrice, String docId) async {
+    await _userService.saveTotalAmount(currentInvestor.id, (currentInvestor.totalAmount+totalPrice));
+    currentInvestor.totalAmount = currentInvestor.totalAmount+totalPrice;
+    return await _requirementService.updateStatus(docId);
   }
 }
 

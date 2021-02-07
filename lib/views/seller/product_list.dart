@@ -23,11 +23,11 @@ class _ProductListState extends State<ProductList> {
         future: productModel.getSellers(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            print("Veri yok");
+           // print("Veri yok");
             return Center(child: CircularProgressIndicator());
           } else {
-            print("Veri var");
-            print(snapshot.data.docs[0]["MARKET_NAME"]);
+           // print("Veri var");
+            //print(snapshot.data.docs[0]["MARKET_NAME"]);
             List<DocumentSnapshot> documents = snapshot.data.docs;
             return ListView.separated(
                 separatorBuilder: (_, __) => Divider(height: 0.5),
@@ -39,9 +39,9 @@ class _ProductListState extends State<ProductList> {
                     subtitle: Text(
                         documents[0]["PRODUCTS"][index]["PRICE"].toString()),
                     trailing: Container(
-                        height: size.height * 0.04,
-                        width: size.height * 0.04,
-                        child: Text(documents[0]["PRODUCTS"][index]["IMAGE"])),
+                        height: size.height * 0.1,
+                        width: size.height * 0.1,
+                        child: Image.network(documents[0]["PRODUCTS"][index]["IMAGE"])),
                   ));
                 });
           }
