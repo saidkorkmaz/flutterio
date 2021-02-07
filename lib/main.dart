@@ -1,10 +1,8 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterio/view_models/login_model.dart';
-import 'package:flutterio/views/investor/investor_home.dart';
 import 'package:flutterio/views/login.dart';
-import 'package:flutterio/views/seller/seller_home.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 import 'core/locator.dart';
 import 'core/services/navigator_service.dart';
@@ -23,7 +21,7 @@ class MyApp extends StatelessWidget {
       create: (BuildContext context) => getIt<LoginModel>(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Fruttio',
+        title: 'Fluttrio',
         navigatorKey: getIt<NavigatorService>().navigatorKey,
         theme: ThemeData(
           primaryColor: Colors.red,
@@ -32,7 +30,13 @@ class MyApp extends StatelessWidget {
         home: Consumer<LoginModel>(
           builder: (BuildContext context, LoginModel loginModel,
                   Widget child) =>
-              loginModel.currentUser == null ? LoginPage() : InvestorHome(),
+              loginModel.currentUser == null ? LoginPage() :
+              FutureBuilder(future: loginModel.getUser(loginModel.currentUser.uid),
+              builder: (context, snapshot){
+
+                  return Scaffold(body:Center(child: CircularProgressIndicator(),));
+
+              },),
         ),
       ),
     );
