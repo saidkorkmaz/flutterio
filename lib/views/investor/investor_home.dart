@@ -3,6 +3,8 @@ import 'package:flutterio/views/investor/investor_profile.dart';
 import 'package:flutterio/views/investor/requirement_list.dart';
 import 'package:flutterio/views/seller/seller_profile.dart';
 
+import '../../globals.dart';
+
 class InvestorHome extends StatefulWidget {
   const  InvestorHome({Key key}) : super(key: key);
 
@@ -24,7 +26,7 @@ class _InvestorHomeState extends State<InvestorHome> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     return Scaffold(
      body:Container(
-        color: Colors.deepPurple,
+        color: colorPrimaryShade,
         child: SafeArea(
           child:  Column(
               children: <Widget>[

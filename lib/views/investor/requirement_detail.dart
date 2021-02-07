@@ -6,6 +6,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../../globals.dart';
+
 class RequirementDetail extends StatelessWidget {
   final Requirement requirement;
   final int length;
@@ -54,7 +56,7 @@ class RequirementDetail extends StatelessWidget {
             ),
             onTap: () => Navigator.pop(context),
           ),
-          backgroundColor: Colors.green,
+          backgroundColor: colorPrimaryShade,
           elevation: 0,
         ),
         backgroundColor: Colors.white,
@@ -109,7 +111,7 @@ class RequirementDetail extends StatelessWidget {
                                       padding: EdgeInsets.symmetric(vertical: 5),
                                       //height: 45,
                                       width: screenWidth*.85,
-                                      decoration: BoxDecoration(color: Colors.blueAccent ,borderRadius: BorderRadius.all(Radius.circular(5))),
+                                      decoration: BoxDecoration(color: colorSecondaryShade,borderRadius: BorderRadius.all(Radius.circular(5))),
                                       child:Padding(
                                         padding: const EdgeInsets.symmetric(horizontal:8.0),
                                         child: Row(
@@ -141,9 +143,9 @@ class RequirementDetail extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: RaisedButton(
-                    color: Colors.green,
+                    color: colorSecondaryShade,
 
-                    child: Text("Bağış Yap",style: TextStyle(color: Colors.white)),
+                    child: Text("Bağış Yap",style: TextStyle(color: Colors.white, fontSize: 20)),
                     onPressed: (){
                       model.makeDonation(requirement.totalPrice, requirement.id);
                       Fluttertoast.showToast(

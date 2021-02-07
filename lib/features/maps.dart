@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import '../globals.dart';
+
 class PlantsMap extends StatefulWidget {
   final int plantsQty;
   PlantsMap(this.plantsQty);
@@ -41,7 +43,7 @@ class _PlantsMapState extends State<PlantsMap> {
           ),
           title: Text("Fidan Haritası"),
         ),
-        backgroundColor: Colors.white
+        backgroundColor: colorSecondaryShade
         ,
         body: isLoading
             ? Center(
