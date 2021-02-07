@@ -59,10 +59,23 @@ class _PlantsMapState extends State<PlantsMap> {
     );
   }
 
-  onMapCreated(GoogleMapController controller) {
+  onMapCreated(GoogleMapController controller) async {
     _mapController = controller;
     print("Map Controller : $_mapController");
+    await createMarkerImageFromAsset(context);
+  }
+  BitmapDescriptor plantIcon;
+  Future<void> createMarkerImageFromAsset(BuildContext context) async {
+    final ImageConfiguration imageConfiguration =
+    createLocalImageConfiguration(context);
+    var bitmap = await BitmapDescriptor.fromAssetImage(
+        imageConfiguration, 'assets/images/plant.png');
 
+    print(plantIcon);
+    setState(() {
+      plantIcon = bitmap;
+
+    });
   }
 
   Set<Marker> _createMarkers() {
@@ -73,8 +86,8 @@ class _PlantsMapState extends State<PlantsMap> {
           markerId: MarkerId("point"),
           position:  LatLng(-38.956176, -67.920666),
           infoWindow: InfoWindow(title: "plant"),
-          icon:
-          BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen)),
+          zIndex: 0,
+          icon: plantIcon),
     );
     return markers;
   }
